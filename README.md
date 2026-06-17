@@ -53,7 +53,7 @@ This pipeline was applied to longitudinal OASIS-3 MRI data (`sub-OAS3XXXX_sess-d
 
 TrUE-Net applies three independent 2D U-Nets — one for each anatomical plane (axial, sagittal, coronal) — and averages their 3D probability volumes to produce the final segmentation map.
 
-![TrUE-Net Main Architecture](assets/main_architecture_final.png)
+![TrUE-Net Main Architecture](WMH_Segmentation/Source/images/main_architecture_final.png)
 
 Each 2D U-Net receives a 2-channel input (FLAIR + T1) and outputs per-voxel WMH probability scores:
 
@@ -80,7 +80,7 @@ Convolution types used in the architecture:
 
 To bias the network toward anatomically plausible WMH regions, TrUE-Net uses a **spatially weighted loss function**. The spatial weight map is computed as the sum of two distance maps derived from the T1 segmentation:
 
-![Spatial Weight Map](assets/spatial_weight_map.png)
+![Spatial Weight Map](WMH_Segmentation/Source/images/spatial_weight_map.png)
 
 **Spatial Distance Map = Ventricle Distance Map + GM Distance Map**
 
@@ -95,7 +95,7 @@ These maps must be pre-computed and provided via the `-gdir` and `-vdir` flags d
 
 The U-Net encoder-decoder is divided into 8 numbered layers for selective fine-tuning. Layers are counted from the output side (decoder) inward:
 
-![Fine-Tuning Layer Numbers](assets/fine_tuning_images.png)
+![Fine-Tuning Layer Numbers](WMH_Segmentation/Source/images/fine_tuning_images.png)
 
 | Layer | Location          | Feature Channels |
 |-------|-------------------|------------------|
